@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
-		<style> * + h3, * + h2, * + h1 { margin-top: 50px } </style>
+		<style> * + h3, * + h2, * + h1 { margin-top: 50px } div.demo { border: 1px solid #ddd; padding: 20px; margin-bottom: 1.25rem; border-radius: 4px; } div.demo button { background: #eee; border: 1px solid #ddd; padding: 10px 15px; margin-right: 10px; border-radius: 4px } </style>
 	</head>
 	<body>
 		
@@ -49,6 +49,7 @@
 					</ul>
 				</div>
 				<div class="col-md-9">
+
 					<h2>Getting Started</h2>
 					<p>Welcome to the getting started tutorial. Here, you'll find how simple it is to install and use Agastya in your website and webapps. Make sure that you have created an account before proceeding with this tutorial.</p>
 					
@@ -67,7 +68,7 @@
 					<h3>Initialization</h3>
 					<p>Your users can toggle Agastya by pressing the keyboard combination <kbd>F</kbd> + <kbd>J</kbd>, the signifier home keys users can feel. For mouse users, you have to create a button with the <code>data-agastya</code> attribute.</p>
 					<pre><code>&lt;button data-agastya&gt;Accessibility&lt;/button&gt;</code></pre>
-					<p><button data-agastya>Accessibility</button></p>
+					<div class="demo"><button data-agastya>Accessibility</button></div>
 					<p>Agastya finds all elements with the attribute, but it is preferred to use a <code>&lt;button&gt;</code> tag or use the ARIA <code>role="button"</code> and add the necessary key binding to the element you're using.</p>
 					
 					<h3>Analytics</h3>
@@ -81,21 +82,21 @@
 					<pre><code>agastya.open();</code></pre>
 					<p>You can add this method to a button with a simple <code>onclick</code> event, for example:</p>
 					<pre><code>&lt;button onclick="agastya.open()"&gt;Open Accessibility Options&lt;/button&gt;</code></pre>
-					<p><button onclick="agastya.open()">Open Accessibility Options</button></p>
+					<div class="demo"><button onclick="agastya.open()">Open Accessibility Options</button></div>
 					
 					<h3>Close</h3>
 					<p>Similarly, you can use this method to close the Agastya widget. If it is already closed, there will be no effect to calling this method. When a user closes Agastya, the widget is not removed from the DOM, it just fades out, and is displayed again when the <code>open</code> method is called.</p>
 					<pre><code>agastya.close();</code></pre>
 					<p>You can add this method to a button with a simple <code>onclick</code> event, for example:</p>
 					<pre><code>&lt;button onclick="agastya.close()"&gt;Close Accessibility Options&lt;/button&gt;</code></pre>
-					<p><button onclick="agastya.close()">Close Accessibility Options</button></p>
+					<div class="demo"><button onclick="agastya.close()">Close Accessibility Options</button></div>
 					
 					<h3>Toggle</h3>
 					<p>This method is the most efficient way to open and close the widget using just one button. It opens the widget if it is closed and vice versa.</p>
 					<pre><code>agastya.toggle();</code></pre>
 					<p>You can add this method to a button with a simple <code>onclick</code> event, for example:</p>
 					<pre><code>&lt;button onclick="agastya.toggle()"&gt;Accessibility Options&lt;/button&gt;</code></pre>
-					<p><button onclick="agastya.toggle()">Accessibility Options</button></p>
+					<div class="demo"><button onclick="agastya.toggle()">Accessibility Options</button></div>
 					
 					<h3>Font Size</h3>
 					<p>This method is used to change the font size of the webpage. Using this, users can increase the font size for a more comfortable reading experience. It is especially useful for audiences with slight visual impairment, like senior citizens.</p>
@@ -112,13 +113,187 @@
 						<tbody>
 							<tr>
 								<td><code>"increase"</code></td>
-								<td><pre><code>agastya.fontSize("increase")</code></pre></td>
+								<td><pre><code>agastya.fontSize("increase");</code></pre></td>
 								<td>Increases the font size by 10%.</td>
+							</tr>
+							<tr>
+								<td><code>"decrease"</code></td>
+								<td><pre><code>agastya.fontSize("decrease");</code></pre></td>
+								<td>Decreases the font size by 10%.</td>
+							</tr>
+							<tr>
+								<td><code>"normal"</code></td>
+								<td><pre><code>agastya.fontSize("normal");</code></pre></td>
+								<td>Reverts the font size to the page's default.</td>
+							</tr>
+							<tr>
+								<td>Pixel value</td>
+								<td><pre><code>agastya.fontSize("16px");</code></pre></td>
+								<td>Changes the font size to the specified value.</td>
 							</tr>
 						</tbody>
 					</table>
-					<p>You can add this method to a button with a simple <code>onclick</code> event, for example:</p>
-					<pre><code>&lt;button onclick="agastya.toggle()"&gt;Accessibility Options&lt;/button&gt;</code></pre>
+					<p>You can add these methods to a button with a <code>onclick</code> events, for example:</p>
+					<pre><code>&lt;button onclick="agastya.fontSize('increase')"&gt;A+&lt;/button&gt;<br>&lt;button onclick="agastya.fontSize('normal')"&gt;A&lt;/button&gt;<br>&lt;button onclick="agastya.fontSize('decrease')"&gt;A&amp;minus;&lt;/button&gt;</code></pre>
+					<div class="demo"><button onclick="agastya.fontSize('increase')">A+</button> <button onclick="agastya.fontSize('normal')">A</button> <button onclick="agastya.fontSize('decrease')">A&minus;</button></div>
+					
+					<h3>Font Family</h3>
+					<p>This method is used to change the typeface of the webpage. Using this, users can use Open Dyslexia, a serif or a sans-serif font based on their reading preference. It is especially useful for audiences with dyslexia or similar reading disorders as they can change the entire typography to Open Dyslexic.</p>
+					<pre><code>agastya.fontFamily(parameter);</code></pre>
+					<p>The parameters allowed are:</p>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Parameter</th>
+								<th>Code</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>"serif"</code></td>
+								<td><pre><code>agastya.fontFamily("serif");</code></pre></td>
+								<td>Changes the font family to the platform serif.</td>
+							</tr>
+							<tr>
+								<td><code>"sans-serif"</code></td>
+								<td><pre><code>agastya.fontFamily("sans-serif");</code></pre></td>
+								<td>Changes the font family to the platform sans-serif.</td>
+							</tr>
+							<tr>
+								<td><code>"dyslexia"</code></td>
+								<td><pre><code>agastya.fontFamily("dyslexia");</code></pre></td>
+								<td>Changes the font family to Open Dyslexic after loading the font.</td>
+							</tr>
+							<tr>
+								<td>Font Face</td>
+								<td><pre><code>agastya.fontFamily("'Helvetica'");</code></pre></td>
+								<td>Changes the font family to the specified font.</td>
+							</tr>
+						</tbody>
+					</table>
+					<p>You can add these methods to a button with a <code>onclick</code> events, for example:</p>
+					<pre><code>&lt;button onclick="agastya.fontFamily('dyslexia')"&gt;Dyslexia-friendly Mode&lt;/button&gt;<br>&lt;button onclick="agastya.fontFamily('Roboto')"&gt;Roboto Font&lt;/button&gt;</code></pre>
+					<div class="demo"><button onclick="agastya.fontFamily('dyslexia')">Dyslexia-friendly Mode</button> <button onclick="agastya.fontFamily('Roboto')">Roboto Font</button></div>
+					
+					<h3>Translate</h3>
+					<p>This feature uses the Website Translator by Google to allow users to translate the content of your webpage to all supported languages.</p>
+					<pre><code>agastya.translate(parameter);</code></pre>
+					<p>The parameters allowed are:</p>
+					<div class="row mb-3" style="overflow: auto; max-height: 300px">
+						<div class="col-md-4">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Parameter</th>
+										<th>Language</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr><td><code>af</code></td><td>Afrikaans</td></tr>
+									<tr><td><code>ga</code></td><td>Irish</td></tr>
+									<tr><td><code>sq</code></td><td>Albanian</td></tr>
+									<tr><td><code>it</code></td><td>Italian</td></tr>
+									<tr><td><code>ar</code></td><td>Arabic</td></tr>
+									<tr><td><code>ja</code></td><td>Japanese</td></tr>
+									<tr><td><code>az</code></td><td>Azerbaijani</td></tr>
+									<tr><td><code>kn</code></td><td>Kannada</td></tr>
+									<tr><td><code>eu</code></td><td>Basque</td></tr>
+									<tr><td><code>ko</code></td><td>Korean</td></tr>
+									<tr><td><code>bn</code></td><td>Bengali</td></tr>
+									<tr><td><code>la</code></td><td>Latin</td></tr>
+									<tr><td><code>be</code></td><td>Belarusian</td></tr>
+									<tr><td><code>lv</code></td><td>Latvian</td></tr>
+									<tr><td><code>bg</code></td><td>Bulgarian</td></tr>
+									<tr><td><code>lt</code></td><td>Lithuanian</td></tr>
+									<tr><td><code>ca</code></td><td>Catalan</td></tr>
+									<tr><td><code>mk</code></td><td>Macedonian</td></tr>
+									<tr><td><code>zh-CN</code></td><td>Chinese Simplified</td></tr>
+									<tr><td><code>ms</code></td><td>Malay</td></tr>
+									<tr><td><code>zh-TW</code></td><td>Chinese Traditional</td></tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="col-md-4">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Parameter</th>
+										<th>Language</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr><td><code>mt</code></td><td>Maltese</td></tr>
+									<tr><td><code>hr</code></td><td>Croatian</td></tr>
+									<tr><td><code>no</code></td><td>Norwegian</td></tr>
+									<tr><td><code>cs</code></td><td>Czech</td></tr>
+									<tr><td><code>fa</code></td><td>Persian</td></tr>
+									<tr><td><code>da</code></td><td>Danish</td></tr>
+									<tr><td><code>pl</code></td><td>Polish</td></tr>
+									<tr><td><code>nl</code></td><td>Dutch</td></tr>
+									<tr><td><code>pt</code></td><td>Portuguese</td></tr>
+									<tr><td><code>en</code></td><td>English</td></tr>
+									<tr><td><code>ro</code></td><td>Romanian</td></tr>
+									<tr><td><code>eo</code></td><td>Esperanto</td></tr>
+									<tr><td><code>ru</code></td><td>Russian</td></tr>
+									<tr><td><code>et</code></td><td>Estonian</td></tr>
+									<tr><td><code>sr</code></td><td>Serbian</td></tr>
+									<tr><td><code>tl</code></td><td>Filipino</td></tr>
+									<tr><td><code>sk</code></td><td>Slovak</td></tr>
+									<tr><td><code>fi</code></td><td>Finnish</td></tr>
+									<tr><td><code>sl</code></td><td>Slovenian</td></tr>
+									<tr><td><code>fr</code></td><td>French</td></tr>
+									<tr><td><code>es</code></td><td>Spanish</td></tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="col-md-4">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Parameter</th>
+										<th>Language</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<tr><td><code>gl</code></td><td>Galician</td></tr>
+										<tr><td><code>sw</code></td><td>Swahili</td></tr>
+										<tr><td><code>ka</code></td><td>Georgian</td></tr>
+										<tr><td><code>sv</code></td><td>Swedish</td></tr>
+										<tr><td><code>de</code></td><td>German</td></tr>
+										<tr><td><code>ta</code></td><td>Tamil</td></tr>
+										<tr><td><code>el</code></td><td>Greek</td></tr>
+										<tr><td><code>te</code></td><td>Telugu</td></tr>
+										<tr><td><code>gu</code></td><td>Gujarati</td></tr>
+										<tr><td><code>th</code></td><td>Thai</td></tr>
+										<tr><td><code>ht</code></td><td>Turkishtr</td></tr>
+										<tr><td><code>iw</code></td><td>Hebrew</td></tr>
+										<tr><td><code>uk</code></td><td>Ukrainian</td></tr>
+										<tr><td><code>hi</code></td><td>Hindi</td></tr>
+										<tr><td><code>ur</code></td><td>Urdu</td></tr>
+										<tr><td><code>hu</code></td><td>Hungarian</td></tr>
+										<tr><td><code>vi</code></td><td>Vietnamese</td></tr>
+										<tr><td><code>is</code></td><td>Icelandic</td></tr>
+										<tr><td><code>cy</code></td><td>Welsh</td></tr>
+										<tr><td><code>id</code></td><td>Indonesian</td></tr>
+										<tr><td><code>yi</code></td><td>Yiddish</td></tr>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<p>You can add this method to a button with an <code>onclick</code> event, for example:</p>
+					<pre><code>&lt;button onclick="agastya.translate('fr')"&gt;Translate to French&lt;/button&gt;<br>&lt;button onclick="agastya.translate('hi')"&gt;Translate to Hindi&lt;/button&gt;</code></pre>
+					<div class="demo"><button onclick="agastya.translate('fr')">Translate to French</button><button onclick="agastya.translate('hi')">Translate to Hindi</button></div>
+					<p>You can also add a selector with particular languages and assign the <code>onchange</code> event to translate.</p>
+					<pre><code>&lt;select onchange="agastya.translate(this.value)"&gt;
+	&lt;option value="ja"&gt;Japanese&lt;/option&gt;
+	&lt;option value="nl"&gt;Dutch&lt;/option&gt;
+	&lt;option value="ru"&gt;Russian&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+					<p>To only allow certain languages in the widget selector, you can add the <code>data-translate-languages</code> attribute to the <code>&lt;body&gt;</code> tag and specify a list of languages. Please note that this <strong>will not</strong> work if there is a space between language codes due a bug in Google Translate.</p>
+					<pre><code>&lt;body data-translate-languages="ja, nl, ru"&gt;...&lt;body&gt; &lt;!-- Will not work --&gt;<br>&lt;body data-translate-languages="ja,nl,ru"&gt;...&lt;body&gt; &lt;!-- Good to go! --&gt;</code></pre>
 				</div>
 			</div>
 		</div>
