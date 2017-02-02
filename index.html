@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+		<style> * + h3, * + h2, * + h1 { margin-top: 50px } </style>
+	</head>
+	<body>
+		
+		<header class="text-center" style="padding: 10vh 0">
+			
+			<h1>Agastya</h1>
+		</header>
+		<div class="container mt-4 ">
+			<div class="row">
+				<div class="col-md-3">
+					<ul class="nav flex-column" style="position: fixed; top: 30px">
+						<li class="nav-item">
+							<a class="nav-link active" href="#">Getting Started</a>
+							<ul class="nav flex-column ml-4">
+								<li class="nav-item"><a class="nav-link" href="#">Installation</a></li>
+								<li class="nav-item"><a class="nav-link" href="#">Initialization</a></li>
+								<li class="nav-item"><a class="nav-link" href="#">Analytics</a></li>
+							</ul>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Methods</a>
+							<ul class="nav flex-column ml-4">
+								<li class="nav-item"><a class="nav-link" href="#">Open</a></li>
+								<li class="nav-item"><a class="nav-link" href="#">Close</a></li>
+								<li class="nav-item"><a class="nav-link" href="#">Toggle</a></li>
+								<li class="nav-item"><a class="nav-link" href="#">Font Size</a></li>
+								<li class="nav-item"><a class="nav-link" href="#">Font Family</a></li>
+								<li class="nav-item"><a class="nav-link" href="#">Translate</a></li>
+								<li class="nav-item"><a class="nav-link" href="#">Night Mode</a></li>
+								<li class="nav-item"><a class="nav-link" href="#">Sepia Mode</a></li>
+								<li class="nav-item"><a class="nav-link" href="#">Yellow Mode</a></li>
+								<li class="nav-item"><a class="nav-link" href="#">Read Aloud</a></li>
+								<li class="nav-item"><a class="nav-link" href="#">Reset</a></li>
+							</ul>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Analytics</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-9">
+					<h2>Getting Started</h2>
+					<p>Welcome to the getting started tutorial. Here, you'll find how simple it is to install and use Agastya in your website and webapps. Make sure that you have created an account before proceeding with this tutorial.</p>
+					
+					<h3>Installation</h3>
+					<p>Agastya is very easy to install to your webpage. All you need to do is add the Agastya JavaScript library before the end of the <code>&lt;/body&gt;</code> tag.</p>
+					
+					<h4>GA-style Code</h4>
+					<p>The preferred method to include Agastya's latest version in your website is to use this script inspired by the Google Analytics script. This will automatically add the Agastya script wherever you have loaded your JavaScript files, <code>&lt;head&gt;</code> or <code>&lt;body&gt;</code>.</p>
+					<pre><code>&lt;script&gt;!function(a,b,c,d,e){d=a.createElement(b),d.src=c,d.async=1,e=a.getElementsByTagName(b)[0],e.parentNode.insertBefore(d,e)}(document,"script","//cdn.oswald.host/agastya/latest.js");&lt;/script&gt;</code></pre>
+					
+					<h4>CORS</h4>
+					<p>You can also use the version-specific library to use secure Cross-Origin Resource Sharing (CORS) features, but you'll have to change your code to recieve updates and new features.</p>
+					<pre><code>&lt;script src="https://cdn.oswald.host/agastya/0.91/agastya.js" integrity="sha384-q4JFUv8QiFVIPVs3SbFTMDZioniWtmiA/zWIrYgtyIePMQ27pBKcs4UUFUBo0Uut" crossorigin="anonymous" async&gt;&lt;/script&gt;</code></pre>
+					<p>Note that CORS is not completely supported in Opera Mini, and IE 10 and below, but that wouldn't cause any loading problems.</p>
+					
+					<h3>Initialization</h3>
+					<p>Your users can toggle Agastya by pressing the keyboard combination <kbd>F</kbd> + <kbd>J</kbd>, the signifier home keys users can feel. For mouse users, you have to create a button with the <code>data-agastya</code> attribute.</p>
+					<pre><code>&lt;button data-agastya&gt;Accessibility&lt;/button&gt;</code></pre>
+					<p><button data-agastya>Accessibility</button></p>
+					<p>Agastya finds all elements with the attribute, but it is preferred to use a <code>&lt;button&gt;</code> tag or use the ARIA <code>role="button"</code> and add the necessary key binding to the element you're using.</p>
+					
+					<h3>Analytics</h3>
+					<p>After you've installed and tested Agastya, you can log in to your dashboard and access usage analytics.</p>
+					
+					<h2>Methods</h2>
+					<p>Agastya features a powerful API with a number of methods you can call.</p>
+					
+					<h3>Open</h3>
+					<p>As the name suggests, you can use this method to open the Agastya widget. If it is already open, there will be no effect to calling this method. When a user opens Agastya the first time, the widget stylesheet is loaded, followed by the widget options, and finally additionally required scripts.</p>
+					<pre><code>agastya.open();</code></pre>
+					<p>You can add this method to a button with a simple <code>onclick</code> event, for example:</p>
+					<pre><code>&lt;button onclick="agastya.open()"&gt;Open Accessibility Options&lt;/button&gt;</code></pre>
+					<p><button onclick="agastya.open()">Open Accessibility Options</button></p>
+					
+					<h3>Close</h3>
+					<p>Similarly, you can use this method to close the Agastya widget. If it is already closed, there will be no effect to calling this method. When a user closes Agastya, the widget is not removed from the DOM, it just fades out, and is displayed again when the <code>open</code> method is called.</p>
+					<pre><code>agastya.close();</code></pre>
+					<p>You can add this method to a button with a simple <code>onclick</code> event, for example:</p>
+					<pre><code>&lt;button onclick="agastya.close()"&gt;Close Accessibility Options&lt;/button&gt;</code></pre>
+					<p><button onclick="agastya.close()">Close Accessibility Options</button></p>
+					
+					<h3>Toggle</h3>
+					<p>This method is the most efficient way to open and close the widget using just one button. It opens the widget if it is closed and vice versa.</p>
+					<pre><code>agastya.toggle();</code></pre>
+					<p>You can add this method to a button with a simple <code>onclick</code> event, for example:</p>
+					<pre><code>&lt;button onclick="agastya.toggle()"&gt;Accessibility Options&lt;/button&gt;</code></pre>
+					<p><button onclick="agastya.toggle()">Accessibility Options</button></p>
+					
+					<h3>Font Size</h3>
+					<p>This method is used to change the font size of the webpage. Using this, users can increase the font size for a more comfortable reading experience. It is especially useful for audiences with slight visual impairment, like senior citizens.</p>
+					<pre><code>agastya.fontSize(parameter);</code></pre>
+					<p>The parameters allowed are:</p>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Parameter</th>
+								<th>Code</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>"increase"</code></td>
+								<td><pre><code>agastya.fontSize("increase")</code></pre></td>
+								<td>Increases the font size by 10%.</td>
+							</tr>
+						</tbody>
+					</table>
+					<p>You can add this method to a button with a simple <code>onclick</code> event, for example:</p>
+					<pre><code>&lt;button onclick="agastya.toggle()"&gt;Accessibility Options&lt;/button&gt;</code></pre>
+				</div>
+			</div>
+		</div>
+		<footer class="text-center" style="padding: 10vh 0">Github</footer>
+
+		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</body>
+</html>
