@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
-		<style> * + h3, * + h2, * + h1 { margin-top: 50px } div.demo { border: 1px solid #ddd; padding: 20px; margin-bottom: 1.25rem; border-radius: 4px; } div.demo button { background: #eee; border: 1px solid #ddd; padding: 10px 15px; margin-right: 10px; border-radius: 4px } </style>
+		<style> * + h3, * + h2, * + h1 { margin-top: 50px } div.demo { border: 1px solid #ddd; padding: 20px; margin-bottom: 1.25rem; border-radius: 4px; } div.demo button, div.demo select { background: #eee; border: 1px solid #ddd; height: 40px; padding: 0 15px; margin-right: 10px; border-radius: 4px } .callout { border: 1px solid #ddd; border-left: 3px solid #69e; padding: 20px; margin-bottom: 1.25rem } .callout h4 { color: #69e } </style>
 	</head>
 	<body>
 		
@@ -48,7 +48,7 @@
 						</li>
 					</ul>
 				</div>
-				<div class="col-md-9">
+				<main class="col-md-9">
 
 					<h2>Getting Started</h2>
 					<p>Welcome to the getting started tutorial. Here, you'll find how simple it is to install and use Agastya in your website and webapps. Make sure that you have created an account before proceeding with this tutorial.</p>
@@ -173,8 +173,8 @@
 						</tbody>
 					</table>
 					<p>You can add these methods to a button with a <code>onclick</code> events, for example:</p>
-					<pre><code>&lt;button onclick="agastya.fontFamily('dyslexia')"&gt;Dyslexia-friendly Mode&lt;/button&gt;<br>&lt;button onclick="agastya.fontFamily('Roboto')"&gt;Roboto Font&lt;/button&gt;</code></pre>
-					<div class="demo"><button onclick="agastya.fontFamily('dyslexia')">Dyslexia-friendly Mode</button> <button onclick="agastya.fontFamily('Roboto')">Roboto Font</button></div>
+					<pre><code>&lt;button onclick="agastya.fontFamily('dyslexia')"&gt;Dyslexia-friendly Mode&lt;/button&gt;<br>&lt;button onclick="agastya.fontFamily('\"Roboto\"')"&gt;Roboto Font&lt;/button&gt;</code></pre>
+					<div class="demo"><button onclick="agastya.fontFamily('dyslexia')">Dyslexia-friendly Mode</button> <button onclick="agastya.fontFamily('\"Roboto\"')">Roboto Font</button></div>
 					
 					<h3>Translate</h3>
 					<p>This feature uses the Website Translator by Google to allow users to translate the content of your webpage to all supported languages.</p>
@@ -288,13 +288,92 @@
 					<div class="demo"><button onclick="agastya.translate('fr')">Translate to French</button><button onclick="agastya.translate('hi')">Translate to Hindi</button></div>
 					<p>You can also add a selector with particular languages and assign the <code>onchange</code> event to translate.</p>
 					<pre><code>&lt;select onchange="agastya.translate(this.value)"&gt;
+	&lt;option selected&gt;Translate this page&lt;/option&gt;
 	&lt;option value="ja"&gt;Japanese&lt;/option&gt;
 	&lt;option value="nl"&gt;Dutch&lt;/option&gt;
 	&lt;option value="ru"&gt;Russian&lt;/option&gt;
 &lt;/select&gt;</code></pre>
+					<div class="demo">
+						<select onchange="agastya.translate(this.value)">
+							<option selected>Translate this page</option>
+							<option value="ja">Japanese</option>
+							<option value="nl">Dutch</option>
+							<option value="ru">Russian</option>
+						</select>
+					</div>
 					<p>To only allow certain languages in the widget selector, you can add the <code>data-translate-languages</code> attribute to the <code>&lt;body&gt;</code> tag and specify a list of languages. Please note that this <strong>will not</strong> work if there is a space between language codes due a bug in Google Translate.</p>
 					<pre><code>&lt;body data-translate-languages="ja, nl, ru"&gt;...&lt;body&gt; &lt;!-- Will not work --&gt;<br>&lt;body data-translate-languages="ja,nl,ru"&gt;...&lt;body&gt; &lt;!-- Good to go! --&gt;</code></pre>
-				</div>
+
+					<h3>Read Aloud</h3>
+					<div class="read-aloud-demo"><p>This feature uses the <code>speechSynthesis</code> API to read out the text on the webpage. This is useful for visually impaired users who do not have a screenreaders, or any other users who might want to listen to the content of your page rather than read it.</p>
+					<pre><code>agastya.readAloud(parameter);</code></pre>
+					<p>The parameter in this method is optional. If you do not provide a parameter, the widget will automatically look for the relevant content in your webpage in the following list. If the first one is not found, it will go on to the next, and so on. When it finds the element, it extracts the plain text and reads it out.</p>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Order</th>
+								<th>Query</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>0</td>
+								<td><code>parameter</code> value</td>
+								<td>The element from query provided as <code>parameter</code>.</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td><code>[data-read-aloud]</code></td>
+								<td>The element with <code>data-read-aloud</code> data attribute.</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td><code>[role="main"]</code></td>
+								<td>The element with <code>role="main"</code> ARIA attribute.</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td><code>main</code></td>
+								<td>The <code>&lt;main&gt;</code> element.</td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td><code>article</code></td>
+								<td>The <code>&lt;article&gt;</code> element.</td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td><code>section</code></td>
+								<td>The <code>&lt;section&gt;</code> element.</td>
+							</tr>
+							<tr>
+								<td>6</td>
+								<td><code>body > *</code></td>
+								<td>The first child of the <code>&lt;body&gt;</code> element.</td>
+							</tr>
+							<tr>
+								<td>7</td>
+								<td><code>body</code></td>
+								<td>The <code>&lt;body&gt;</code> element.</td>
+							</tr>
+							<tr>
+								<td>8</td>
+								<td><code>html</code></td>
+								<td>The <code>&lt;html&gt;</code> element.</td>
+							</tr>
+						</tbody>
+					</table>
+					<p>You can also add the attribute <code>data-read-aloud</code> to an element to make it the default read aloud element. If you provide a parameter, the content in that element will be read out.</p>
+					<div class="callout">
+						<h4 class="h5">Semantic Code</h4>
+						<div>Ideally, your webpage should contain one (and no more) <code>main</code> tag wherein all the primary content is present. However, due to framework constrains, if you're stuck with a <code>div</code>, make sure you add <code>role="main"</code> to allow screenreaders find it faster.</div>
+					</div>
+					<p>You can add this method to a button with a simple <code>onclick</code> event, for example:</p>
+					<pre><code>&lt;button onclick="agastya.readAloud('.read-aloud-demo')"&gt;Read Aloud This Section&lt;/button&gt;<br>&lt;button onclick="agastya.readAloud()"&gt;Read Aloud Everything&lt;/button&gt;</code></pre>
+					<div class="demo"><button onclick="agastya.readAloud('.read-aloud-demo')">Read Aloud This Section</button><button onclick="agastya.readAloud()">Read Aloud Everything</button></div></div>
+
+				</main>
 			</div>
 		</div>
 		<footer class="text-center" style="padding: 10vh 0">Github</footer>
