@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
-		<style> * + h3, * + h2, * + h1 { margin-top: 50px } div.demo { border: 1px solid #ddd; padding: 20px; margin-bottom: 1.25rem; border-radius: 4px; } div.demo button, div.demo select { background: #eee; border: 1px solid #ddd; height: 40px; padding: 0 15px; margin-right: 10px; border-radius: 4px } .callout { border: 1px solid #ddd; border-left: 3px solid #69e; padding: 20px; margin-bottom: 1.25rem } .callout h4 { color: #69e } .active { font-weight: bold } .col-md-3__wrapper { position: fixed; top: 40px; width: 280px } </style>
+		<style> * + h3, * + h2, * + h1 { margin-top: 50px } div.demo { border: 1px solid #ddd; padding: 20px; margin-bottom: 1.25rem; border-radius: 4px; } div.demo button, div.demo select { background: #eee; border: 1px solid #ddd; height: 40px; padding: 0 15px; margin-right: 10px; border-radius: 4px } .callout { border: 1px solid #ddd; border-left: 3px solid #69e; padding: 20px; margin-bottom: 1.25rem } .callout h4 { color: #69e } .active { font-weight: bold } .col-md-3__wrapper { position: fixed; top: 40px; width: 280px } section + section { margin-top: 3rem } </style>
 	</head>
 	<body>
 		
@@ -46,6 +46,12 @@
 					
 					<h2>Methods</h2>
 					<p>Agastya features a powerful API with a number of methods you can call. Note that the Agastya widget already makes use of these APIs and you don't need to use them unless you're building a custom accessibility widget.</p>
+
+					<h3>Usage</h3>
+					<p>To use these methods, you first have to initialize the Agastya API. We don't automatically do this because majority of websites use the built-in Agastya widget than the APIs to build their own accessibility widget. You can call this function to initialize the API, which will then load all relevant scripts</p>
+					<pre><code>agastya.API();</code></pre>
+					<p>Ideally, you should add the following line of code after including the library.</p>
+					<pre><code>&lt;script&gt; agastya.API(); &lt;/script&gt;</code></pre>
 					
 					<h3>Open</h3>
 					<p>As the name suggests, you can use this method to open the Agastya widget. If it is already open, there will be no effect to calling this method. When a user opens Agastya the first time, the widget stylesheet is loaded, followed by the widget options, and finally additionally required scripts.</p>
@@ -106,6 +112,10 @@
 					<p>You can add these methods to a button with a <code>onclick</code> events, for example:</p>
 					<pre><code>&lt;button onclick="agastya.fontSize('increase')"&gt;A+&lt;/button&gt;<br>&lt;button onclick="agastya.fontSize('normal')"&gt;A&lt;/button&gt;<br>&lt;button onclick="agastya.fontSize('decrease')"&gt;A&amp;minus;&lt;/button&gt;</code></pre>
 					<div class="demo"><button onclick="agastya.fontSize('increase')">A+</button> <button onclick="agastya.fontSize('normal')">A</button> <button onclick="agastya.fontSize('decrease')">A&minus;</button></div>
+					<p>Another implementation could be a slider.</p>
+					<div class="demo">
+						<input type="range" min="80" max="120" value="100" onchange="agastya.fontSize(this.value+'%')">
+					</div>
 					
 					<h3>Font Family</h3>
 					<p>This method is used to change the typeface of the webpage. Using this, users can use Open Dyslexia, a serif or a sans-serif font based on their reading preference. It is especially useful for audiences with dyslexia or similar reading disorders as they can change the entire typography to Open Dyslexic.</p>
