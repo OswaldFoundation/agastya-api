@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
-		<style> * + h3, * + h2, * + h1 { margin-top: 50px } div.demo { border: 1px solid #ddd; padding: 20px; margin-bottom: 1.25rem; border-radius: 4px; } div.demo button, div.demo select { background: #eee; border: 1px solid #ddd; height: 40px; padding: 0 15px; margin-right: 10px; border-radius: 4px } .callout { border: 1px solid #ddd; border-left: 3px solid #69e; padding: 20px; margin-bottom: 1.25rem } .callout h4 { color: #69e } </style>
+		<style> * + h3, * + h2, * + h1 { margin-top: 50px } div.demo { border: 1px solid #ddd; padding: 20px; margin-bottom: 1.25rem; border-radius: 4px; } div.demo button, div.demo select { background: #eee; border: 1px solid #ddd; height: 40px; padding: 0 15px; margin-right: 10px; border-radius: 4px } .callout { border: 1px solid #ddd; border-left: 3px solid #69e; padding: 20px; margin-bottom: 1.25rem } .callout h4 { color: #69e } .active { font-weight: bold } .col-md-3__wrapper { position: fixed; top: 40px; width: 280px } </style>
 	</head>
 	<body>
 		
@@ -15,40 +15,10 @@
 			
 			<h1>Agastya</h1>
 		</header>
-		<div class="container mt-4 ">
+		<main class="container mt-4">
 			<div class="row">
-				<div class="col-md-3">
-					<ul class="nav flex-column" style="position: fixed; top: 30px">
-						<li class="nav-item">
-							<a class="nav-link active" href="#">Getting Started</a>
-							<ul class="nav flex-column ml-4">
-								<li class="nav-item"><a class="nav-link" href="#">Installation</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">Initialization</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">Analytics</a></li>
-							</ul>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Methods</a>
-							<ul class="nav flex-column ml-4">
-								<li class="nav-item"><a class="nav-link" href="#">Open</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">Close</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">Toggle</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">Font Size</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">Font Family</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">Translate</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">Night Mode</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">Sepia Mode</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">Yellow Mode</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">Read Aloud</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">Reset</a></li>
-							</ul>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Analytics</a>
-						</li>
-					</ul>
-				</div>
-				<main class="col-md-9">
+
+				<div class="col-md-9">
 
 					<h2>Getting Started</h2>
 					<p>Welcome to the getting started tutorial. Here, you'll find how simple it is to install and use Agastya in your website and webapps. Make sure that you have created an account before proceeding with this tutorial.</p>
@@ -75,7 +45,7 @@
 					<p>After you've installed and tested Agastya, you can log in to your dashboard and access usage analytics.</p>
 					
 					<h2>Methods</h2>
-					<p>Agastya features a powerful API with a number of methods you can call.</p>
+					<p>Agastya features a powerful API with a number of methods you can call. Note that the Agastya widget already makes use of these APIs and you don't need to use them unless you're building a custom accessibility widget.</p>
 					
 					<h3>Open</h3>
 					<p>As the name suggests, you can use this method to open the Agastya widget. If it is already open, there will be no effect to calling this method. When a user opens Agastya the first time, the widget stylesheet is loaded, followed by the widget options, and finally additionally required scripts.</p>
@@ -373,15 +343,21 @@
 					<pre><code>&lt;button onclick="agastya.readAloud('.read-aloud-demo')"&gt;Read Aloud This Section&lt;/button&gt;<br>&lt;button onclick="agastya.readAloud()"&gt;Read Aloud Everything&lt;/button&gt;</code></pre>
 					<div class="demo"><button onclick="agastya.readAloud('.read-aloud-demo')">Read Aloud This Section</button><button onclick="agastya.readAloud()">Read Aloud Everything</button></div></div>
 
-				</main>
+				</div>
 			</div>
-		</div>
+		</main>
 		<footer class="text-center" style="padding: 10vh 0">Github</footer>
 
-		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
 		<script>hljs.initHighlightingOnLoad();</script>
+		<script src="scrollnav.js"></script>
+		<script> $("main .col-md-9").scrollNav({
+				sections: "h2, h3",
+				className: "col-md-3",
+				headlineText: ""
+			}); </script>
 	</body>
 </html>
