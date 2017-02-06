@@ -415,6 +415,83 @@ for (var i = 0; i < images.length; i++) { // Find all images
 }
 </code></pre>
 
+					<h2>Modes</h2>
+					<p>Modes are predefined "themes" that consist of backgroud and text colors, typefaces, and font sizes. You can use the <code>agastya.reset()</code> method to reset the mode. You can also also add your own custom modes by logging into the Agastya dashboard.</p>
+
+					<h3>Night Mode</h3>
+					<p>The night mode inverts your webpage into a high-contrast white-on-black color combination for strain-free reading in the dark. This mode changes the font color based on your webpage's default color. You can use the following method for this mode:</p>
+					<pre><code>agastya.night();</code></pre>
+
+					<h3>Yellow Mode</h3>
+					<p>In some studies, it is found that a black-on-yellow color combination makes it easier for people with learning disorders such as dyslexia read, and this mode does exactly that. You can use the following method for this mode:</p>
+					<pre><code>agastya.yellow();</code></pre>
+
+					<h3>Sepia Mode</h3>
+					<p>Just like the f.lux program, this mode adjusts the color temperature of your webpage to a warmer shade to reduce eye strain during night-time use and reduce disruption of sleep patterns. It reduces the prominence of white–blue light at night and thusly improves the effectiveness of sleep. You can use the following method for this mode:</p>
+					<pre><code>agastya.yellow();</code></pre>
+
+					<h2>Creating for Agastya</h2>
+					<p>It's very easy to build a plugin for Agastya. Follow the tutorial below and feel free to submit a link to your plugin, and we'll be happy to host it for free on our global content delivery network so that other users can use it too by enabling it in their dashboards.</p>
+
+					<h3>Files</h3>
+					<p>The Agastya file structure looks like this:</p>
+					<pre><code>.
++-- agastya.js
++-- css
+|   +-- agastya.pluginName.scss
+|   +-- min
+|       +-- agastya.pluginName.css
+|       +-- agastya.pluginName.css.map
++-- js
+|   +-- agastya.pluginName.js
+|   +-- min
+|       +-- agastya.pluginName-min.js
+|       +-- agastya.pluginName-min.js.map
+</code></pre>
+					<p>So, when you're building for Agastya, you have to follow this file structure and create a compressed folder with your files. We require you to use Sass with <code>.scss</code> extension if you have additional styles in plugin, and compile it with the following settings:</p>
+					<ul>
+						<li>Output style: Compressed</li>
+						<li>Create a source map</li>
+						<li>After compiling:
+							<ul>
+								<li>Run Bless on the CSS file</li>
+								<li>Run Autoprefixer on the CSS file</li>
+							</ul>
+						</li>
+						<li>Output: /css/min/agastya.pluginName.css</li>
+					</ul>
+					<p>For JavaScript files too, choose the compressed output style and create a source map.</p>
+
+					<h3>Coding</h3>
+					<p>We like to follow simple structure when writing code for Agastya. Please follow these guidelines to have a consistent design pattern.</p>
+
+					<h4>JavaScript</h4>
+					<p>Make sure to use <code>agastya.analytics();</code> based on what the action is, this helps you and the website owner track Agastya's usage. Before actually making changes to the DOM, use <code>agastya.resetMode();</code> to remove all previous changes. Finally, after making your changes, use <code>agastya.save();</code> to save these changes in local storage.</p>
+					<p>To make any style changes, use <code>agastya.style</code> as follows:</p>
+					<pre><code>agastya.style.query.property = value;</code></pre>
+					<p>For example:</p>
+					<pre><code>agastya.pluginName = function(a, b) {
+	agastya.analytics("Plugin Name", "Description of usage");
+	agastya.resetMode();
+	/* Your code starts */
+	agastya.style.body.fontSize = a + "px";
+	agastya.style.body.color = b;
+	/* Your code ends */
+	agastya.save();
+}</code></pre>
+
+					<h4>CSS</h4>
+					<p>Please don't change any global styles. Use Sass to restrict your changes to the particular class name that is automatically added to <code>&lt;html&gt;</code>.</p>
+					<pre><code>.pluginName {
+	body {
+		/* Your code here */
+	}
+	a {
+		/* Your code here */
+	}
+	/* Your code here */
+}</code></pre>
+
 				</div>
 			</div>
 		</main>
